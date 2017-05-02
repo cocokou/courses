@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Verdana;
+        }
+               
+        .circle {
+            height: 2em;
+            width: 2em;
+            border: .1em solid darkgray;
+            border-radius: 1.1em;
+            display: inline-block;
+            margin: 0;
+            padding: .1em;
+        }
+        
+        .hover {
+            background-color: deepskyblue;
+        }
+        
+        .chosen {
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+ <h1>How do you like jQuery</h1>
+ <div id="container">
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+ </div>
+ <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
+ <script>
+        $(function() {
+              $('.circle').hover(function() {
+               $(this).prevAll().addClass('hover');
+               $(this).addClass('hover');
+               $(this).mouseout(function() {
+                   $(this).prevAll().removeClass('hover');
+                   $(this).removeClass('hover');
+               });       
+           });      
+              
+           $('.circle').click(function() {
+               $(this).prevAll().addClass('chosen');
+               $(this).addClass('chosen');
+               $(this).nextAll().removeClass('chosen');
+           });
+        });
+ </script>
+</body>
+
+</html>
